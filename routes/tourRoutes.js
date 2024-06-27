@@ -6,9 +6,14 @@ router.param("id", controller.checkId);
 
 //As Task
 
+// Create a checkBody middleware
+// Check if body contains the name and price property
+//If not , send back 400 (bad request)
+// Add it to the post handler stack
+
 router.route("/")
 .get(controller.getAllTours)
-.post(controller.createTour);
+.post(controller.checkBody,controller.createTour);
 
 router
   .route("/:id")
